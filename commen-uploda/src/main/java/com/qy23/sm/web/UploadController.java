@@ -29,6 +29,12 @@ import java.util.UUID;
 public class UploadController {
 
 
+    /**
+     * 上传
+     *
+     * @param file 文件
+     * @return {@link AxiosResuit}* @throws IOException ioexception
+     */
     @PostMapping("upload")
     public AxiosResuit upload(@RequestPart Part file) throws IOException {
 

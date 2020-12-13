@@ -29,6 +29,7 @@ public class EmailService {
     @Value("${mail.from}")
     private String from;
 
+
     @Async
     public void sendMail(String to,String message)  {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
