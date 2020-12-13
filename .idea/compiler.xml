@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="com-entity" />
+        <module name="com-mapper" />
+        <module name="com-service" />
+        <module name="com-web" />
+        <module name="commen-email" />
+        <module name="commen-uploda" />
+        <module name="common-cache" />
+        <module name="common-getbean" />
+        <module name="common-treadpool" />
+        <module name="common-useragent" />
+        <module name="common-valicator" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="com-entity" target="1.8" />
+      <module name="com-mapper" target="1.8" />
+      <module name="com-service" target="1.8" />
+      <module name="com-web" target="1.8" />
+      <module name="commen-email" target="1.8" />
+      <module name="commen-uploda" target="1.8" />
+      <module name="common-cache" target="1.8" />
+      <module name="common-getbean" target="1.8" />
+      <module name="common-treadpool" target="1.8" />
+      <module name="common-useragent" target="1.8" />
+      <module name="common-valicator" target="1.8" />
+      <module name="crm-ssm" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

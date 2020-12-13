@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+     <!--包扫描-->
+    <context:component-scan base-package="com.qy23.sm.service"/>
+    <context:component-scan base-package="com.qy23.sm.token"/>
+    <!--创建事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--开启自动事务管理-->
+    <tx:annotation-driven/>
+
+    <!--解决跨域-->
+    <bean id="huige" class="org.springframework.web.filter.CorsFilter">
+        <constructor-arg name="configSource">
+            <bean class="org.springframework.web.cors.UrlBasedCorsConfigurationSource">
+                <property name="corsConfigurations">
+                    <map>
+                        <entry key="/**">
+                            <bean class="org.springframework.web.cors.CorsConfiguration">
+                                <property name="allowCredentials" value="true"/>
+                                <property name="allowedHeaders" value="*"/>
+                                <property name="allowedOrigins" value="*"/>
+                                <property name="allowedMethods">
+                                    <list>
+                                        <value>GET</value>
+                                        <value>PUT</value>
+                                        <value>POST</value>
+                                        <value>DELETE</value>
+                                        <value>OPTIONS</value>
+                                        <value>HEAD</value>
+                                    </list>
+                                </property>
+                            </bean>
+                        </entry>
+                    </map>
+                </property>
+            </bean>
+        </constructor-arg>
+    </bean>
+
+
+</beans>
