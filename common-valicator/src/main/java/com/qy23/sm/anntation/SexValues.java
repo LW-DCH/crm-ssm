@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
 
 /**
  * 性别区分注解
+ *
  * @author dn19
  */
 //运行在哪个层
@@ -28,5 +29,5 @@ public @interface SexValues {
 
     Class<? extends Payload>[] payload() default {};
 
-    String[] values() default{};
+    String[] values() default {};
 }

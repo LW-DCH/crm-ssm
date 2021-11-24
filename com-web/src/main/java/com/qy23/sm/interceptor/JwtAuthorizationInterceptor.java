@@ -1,11 +1,8 @@
 package com.qy23.sm.interceptor;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
-import com.auth0.jwt.interfaces.DecodedJWT;
-import com.qy23.sm.http.AxiosStatus;
 import com.qy23.sm.login.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +22,7 @@ public class JwtAuthorizationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
         boolean b = tokenService.tokenAuthorization(request);
-        if (!b){
+        if (!b) {
             throw new JWTVerificationException("token认证不正确");
         }
         return b;

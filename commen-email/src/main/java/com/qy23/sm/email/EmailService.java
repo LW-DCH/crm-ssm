@@ -31,7 +31,7 @@ public class EmailService {
 
 
     @Async
-    public void sendMail(String to,String message)  {
+    public void sendMail(String to, String message) {
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, "UTF-8");
         try {
@@ -43,7 +43,6 @@ public class EmailService {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
 
 
     }

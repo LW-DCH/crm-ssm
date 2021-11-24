@@ -48,42 +48,42 @@ public class SysUserRoleServiceImpl implements ISysUserRoleService {
 
     @Override
     public void add(SysUserRole sysUserRole) {
-         sysUserRoleMapper.insert(sysUserRole);
+        sysUserRoleMapper.insert(sysUserRole);
     }
 
     @Override
     public void update(SysUserRole sysUserRole) {
-       sysUserRoleMapper.updateById(sysUserRole);
+        sysUserRoleMapper.updateById(sysUserRole);
     }
 
     @Override
     public void delete(Serializable id) {
-      sysUserRoleMapper.deleteById(id);
+        sysUserRoleMapper.deleteById(id);
     }
 
     @Override
     public void deleteRoleByUserId(Serializable userId) {
         QueryWrapper<SysUserRole> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysUserRole::getUserId,userId);
+        wrapper.lambda().eq(SysUserRole::getUserId, userId);
         sysUserRoleMapper.delete(wrapper);
     }
 
     @Override
     public void deleteRoleById(Serializable userId, Serializable roleId) {
         QueryWrapper<SysUserRole> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysUserRole::getRoleId,roleId).eq(SysUserRole::getUserId,userId);
+        wrapper.lambda().eq(SysUserRole::getRoleId, roleId).eq(SysUserRole::getUserId, userId);
         sysUserRoleMapper.delete(wrapper);
     }
 
     @Override
     public List<SysRole> getRoleByUserId(Serializable userId) {
         QueryWrapper<SysUserRole> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysUserRole::getUserId,userId);
+        wrapper.lambda().eq(SysUserRole::getUserId, userId);
         List<SysUserRole> sysUserRoles = sysUserRoleMapper.selectList(wrapper);
         ArrayList<SysRole> roles = new ArrayList<>();
         sysUserRoles.forEach(sysUserRole -> {
-           SysRole role = iSysRoleService.findById(sysUserRole.getRoleId());
-           roles.add(role);
+            SysRole role = iSysRoleService.findById(sysUserRole.getRoleId());
+            roles.add(role);
         });
         return roles;
     }

@@ -95,14 +95,14 @@ public class SysUserController {
         Configuration configuration = freeMarkerConfigurer.getConfiguration();
         Template template = configuration.getTemplate("user.ftl", "UTF-8");
         Map<String, String> map = new HashMap<>(16);
-        map.put("userID",sysUser.getUserId()+"");
-        map.put("userName",sysUser.getUserName());
-        map.put("email",sysUser.getEmail());
-        map.put("phone",sysUser.getPhone());
-        map.put("password","123456");
+        map.put("userID", sysUser.getUserId() + "");
+        map.put("userName", sysUser.getUserName());
+        map.put("email", sysUser.getEmail());
+        map.put("phone", sysUser.getPhone());
+        map.put("password", "123456");
         StringWriter writer = new StringWriter();
         template.process(map, writer);
-        AsyncManager.getInstance().executeTask(AsyncFactory.executeEmail(sysUser.getEmail(),writer.toString()));
+        AsyncManager.getInstance().executeTask(AsyncFactory.executeEmail(sysUser.getEmail(), writer.toString()));
         return AxiosResuit.success();
     }
 
@@ -137,19 +137,19 @@ public class SysUserController {
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete( @PathVariable Serializable id) {
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iSysUserService.delete(id);
         return AxiosResuit.success();
     }
 
     @GetMapping("{userId}/roles")
-    public AxiosResuit getRoleByUserId(@PathVariable Serializable userId){
+    public AxiosResuit getRoleByUserId(@PathVariable Serializable userId) {
         List<SysRole> sysRoles = iSysUserRoleService.getRoleByUserId(userId);
         return AxiosResuit.success(sysRoles);
     }
 
     @DeleteMapping("{userId}/role/{roleId}")
-    public AxiosResuit deleteRoleById(@PathVariable Serializable userId,@PathVariable Serializable roleId){
+    public AxiosResuit deleteRoleById(@PathVariable Serializable userId, @PathVariable Serializable roleId) {
         iSysUserRoleService.deleteRoleById(userId, roleId);
         return AxiosResuit.success();
     }

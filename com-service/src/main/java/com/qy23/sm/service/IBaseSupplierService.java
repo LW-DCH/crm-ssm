@@ -4,7 +4,7 @@ import com.qy23.sm.entity.BaseSupplier;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author 刘伟

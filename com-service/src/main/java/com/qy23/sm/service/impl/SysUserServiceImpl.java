@@ -125,14 +125,14 @@ public class SysUserServiceImpl implements ISysUserService {
         return menus;
     }
 
-    public void getMenuChild(SysMenu sysMenu,List<SysMenu> all){
+    public void getMenuChild(SysMenu sysMenu, List<SysMenu> all) {
         List<SysMenu> collect = all.stream().filter(sysMenu1 -> sysMenu1.getParentId().equals(sysMenu.getMenuId())).collect(Collectors.toList());
-        if (!CollectionUtils.isEmpty(collect)){
+        if (!CollectionUtils.isEmpty(collect)) {
             sysMenu.setChildren(collect);
         }
-        collect.forEach(sysMenu2 ->{
-            getMenuChild(sysMenu2,all);
-        } );
+        collect.forEach(sysMenu2 -> {
+            getMenuChild(sysMenu2, all);
+        });
     }
 
 
@@ -143,8 +143,8 @@ public class SysUserServiceImpl implements ISysUserService {
         List<SysMenu> collect = menus.stream().filter(sysMenu1 -> !sysMenu1.getMenuType().equalsIgnoreCase("F")).collect(Collectors.toList());
         //一级菜单
         List<SysMenu> list = collect.stream().filter(sysMenu2 -> sysMenu2.getParentId().longValue() == 0).collect(Collectors.toList());
-        list.forEach(list1->{
-            getMenuChild(list1,collect);
+        list.forEach(list1 -> {
+            getMenuChild(list1, collect);
         });
         return list;
     }

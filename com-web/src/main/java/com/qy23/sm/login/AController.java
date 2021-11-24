@@ -4,14 +4,11 @@ import com.qy23.sm.entity.LoginUser;
 import com.qy23.sm.entity.SysMenu;
 import com.qy23.sm.entity.SysUser;
 import com.qy23.sm.http.AxiosResuit;
-import com.qy23.sm.service.ISysUserService;
 import com.qy23.sm.useragent.ServiceUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Null;
 import java.util.HashMap;
 import java.util.List;
 
@@ -56,9 +53,9 @@ public class AController {
         List<SysMenu> userInfo = loginService.getUserInfo(userId);
         List<SysMenu> userBtnPerm = loginService.getUserBtnPerm(userId);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("user",sysUser);
-        map.put("info",userInfo);
-        map.put("perm",userBtnPerm);
+        map.put("user", sysUser);
+        map.put("info", userInfo);
+        map.put("perm", userBtnPerm);
         loginUser.setPerms(userBtnPerm);
         tokenService.cacheLoginUser(loginUser);
         return AxiosResuit.success(map);

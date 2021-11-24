@@ -19,9 +19,10 @@ public interface ISysUserService extends IBaseService<SysUser> {
     SysUser findByUserName(String userName);
 
     List<SysMenu> getRouterTreeByUserId(Long userId);
-    List<SysMenu> findUserRouter(Long userId);
-    List<SysMenu> findUserBtnPerm(Long userId);
 
+    List<SysMenu> findUserRouter(Long userId);
+
+    List<SysMenu> findUserBtnPerm(Long userId);
 
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 刘伟
@@ -21,13 +21,14 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class BaseCustomerServiceImpl  implements IBaseCustomerService {
+public class BaseCustomerServiceImpl implements IBaseCustomerService {
 
     @Autowired
     private BaseCustomerMapper baseCustomerMapper;
 
     /**
      * 查询所有
+     *
      * @return
      */
     @Override
@@ -37,6 +38,7 @@ public class BaseCustomerServiceImpl  implements IBaseCustomerService {
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
@@ -48,11 +50,12 @@ public class BaseCustomerServiceImpl  implements IBaseCustomerService {
 
     @Override
     public IPage<BaseCustomer> page(IPage<BaseCustomer> page) {
-        return baseCustomerMapper.selectPage(page,null);
+        return baseCustomerMapper.selectPage(page, null);
     }
 
     /**
      * 添加
+     *
      * @param baseCustomer
      */
     @Override
@@ -62,6 +65,7 @@ public class BaseCustomerServiceImpl  implements IBaseCustomerService {
 
     /**
      * 修改
+     *
      * @param baseCustomer
      */
     @Override
@@ -71,6 +75,7 @@ public class BaseCustomerServiceImpl  implements IBaseCustomerService {
 
     /**
      * 删除
+     *
      * @param id
      */
     @Override

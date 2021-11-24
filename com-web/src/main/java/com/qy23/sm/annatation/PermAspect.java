@@ -8,7 +8,6 @@ import com.qy23.sm.http.AxiosStatus;
 import com.qy23.sm.login.TokenService;
 import com.qy23.sm.useragent.ServiceUtils;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -16,7 +15,6 @@ import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.List;
 
@@ -37,19 +35,20 @@ public class PermAspect {
     public JSONUtils jsonUtils;
 
     @Pointcut("@annotation(com.qy23.sm.annatation.HasPerm)")
-    public void myPoinCut(){}
+    public void myPoinCut() {
+    }
 
     @Before(value = "myPoinCut()")
-    public void before(JoinPoint joinPoint){
+    public void before(JoinPoint joinPoint) {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
         HasPerm declaredAnnotation = method.getDeclaredAnnotation(HasPerm.class);
-        if (declaredAnnotation!=null){
+        if (declaredAnnotation != null) {
             String perm = declaredAnnotation.perm();
             LoginUser loginUser = tokenService.getLoginUser(ServiceUtils.getRequest());
             List<SysMenu> perms = loginUser.getPerms();
             boolean b = perms.stream().anyMatch(sysMenu -> sysMenu.getPerms().equalsIgnoreCase(perm));
-            if (!b){
+            if (!b) {
                 ServiceUtils.returnJsonStr(jsonUtils.obj2str(AxiosResuit.error(AxiosStatus.TOKEN_VALID_FAILURE)));
             }
         }

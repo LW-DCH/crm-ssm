@@ -12,8 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- *
  * @ClassName JSONUtils
  * @Author 刘伟
  * @Date 2020/10/31 20:25
@@ -23,15 +21,16 @@ import java.util.Map;
 @Component
 public class JSONUtils {
 
-    ObjectMapper objectMapper=new ObjectMapper();
+    ObjectMapper objectMapper = new ObjectMapper();
 
     /**
      * 对象转JSON
+     *
      * @param obj
      * @return
      */
-    public  String obj2str(Object obj){
-        if (obj instanceof String){
+    public String obj2str(Object obj) {
+        if (obj instanceof String) {
             return (String) obj;
         }
         try {
@@ -45,16 +44,17 @@ public class JSONUtils {
 
     /**
      * 转普通对象
+     *
      * @param jsonstr
      * @param tClass
      * @param <T>
      * @return
      */
-    public <T> T str2obj(String jsonstr,Class<T> tClass){
-        T t= null;
+    public <T> T str2obj(String jsonstr, Class<T> tClass) {
+        T t = null;
         try {
-            if (!StringUtils.isEmpty(jsonstr)){
-                t = objectMapper.readValue(jsonstr,tClass);
+            if (!StringUtils.isEmpty(jsonstr)) {
+                t = objectMapper.readValue(jsonstr, tClass);
             }
 
         } catch (IOException e) {
@@ -65,14 +65,15 @@ public class JSONUtils {
 
     /**
      * 转List集合
+     *
      * @param jsonStr
      * @param tClass
      * @param <T>
      * @return
      */
-    public <T> List<T> str2List(String jsonStr,Class<T> tClass){
+    public <T> List<T> str2List(String jsonStr, Class<T> tClass) {
         CollectionType collectionType = objectMapper.getTypeFactory().constructCollectionType(List.class, tClass);
-        List<T> list= null;
+        List<T> list = null;
         try {
             list = objectMapper.readValue(jsonStr, collectionType);
         } catch (IOException e) {
@@ -83,6 +84,7 @@ public class JSONUtils {
 
     /**
      * 转为map
+     *
      * @param jsonStr
      * @param kClass
      * @param tClass
@@ -90,15 +92,15 @@ public class JSONUtils {
      * @param <T>
      * @return
      */
-    public <K,T> Map<K,T> str2map(String jsonStr,Class<K> kClass,Class<T> tClass){
+    public <K, T> Map<K, T> str2map(String jsonStr, Class<K> kClass, Class<T> tClass) {
         MapType mapType = objectMapper.getTypeFactory().constructMapType(Map.class, kClass, tClass);
-        Map<K,T> map=null;
+        Map<K, T> map = null;
         try {
-            map= objectMapper.readValue(jsonStr, mapType);
+            map = objectMapper.readValue(jsonStr, mapType);
         } catch (IOException e) {
             e.printStackTrace();
         }
-          return map;
+        return map;
 
     }
 

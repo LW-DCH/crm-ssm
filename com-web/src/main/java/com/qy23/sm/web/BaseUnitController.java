@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 刘伟
@@ -30,68 +30,74 @@ public class BaseUnitController {
 
     /**
      * 查询所有
+     *
      * @return
      */
     @GetMapping()
-    public AxiosResuit list(){
+    public AxiosResuit list() {
         List<BaseUnit> all = iBaseUnitService.findAll();
         return AxiosResuit.success(all);
     }
 
     /**
      * 分页查询
+     *
      * @param currentPage
      * @param pageSize
      * @return
      */
     @GetMapping("page")
     public AxiosResuit page(@RequestParam(defaultValue = "1") int currentPage,
-                            @RequestParam(defaultValue = "1") int pageSize){
-        IPage<BaseUnit> page =new Page<>(currentPage,pageSize);
+                            @RequestParam(defaultValue = "1") int pageSize) {
+        IPage<BaseUnit> page = new Page<>(currentPage, pageSize);
         IPage<BaseUnit> page1 = iBaseUnitService.page(page);
-        return AxiosResuit.success(PageResult.instance(page1.getRecords(),page1.getTotal()));
+        return AxiosResuit.success(PageResult.instance(page1.getRecords(), page1.getTotal()));
     }
 
     /**
      * 添加
+     *
      * @param baseUnit
      * @return
      */
     @PostMapping
-    public AxiosResuit add(@RequestBody BaseUnit baseUnit){
+    public AxiosResuit add(@RequestBody BaseUnit baseUnit) {
         iBaseUnitService.add(baseUnit);
         return AxiosResuit.success();
     }
 
     /**
      * 修改
+     *
      * @param baseUnit
      * @return
      */
     @PutMapping
-    public AxiosResuit updata(@RequestBody BaseUnit baseUnit){
+    public AxiosResuit updata(@RequestBody BaseUnit baseUnit) {
         iBaseUnitService.update(baseUnit);
         return AxiosResuit.success();
     }
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
     @GetMapping("{id}")
-    public AxiosResuit findById(@PathVariable Serializable id){
+    public AxiosResuit findById(@PathVariable Serializable id) {
         BaseUnit baseUnit = iBaseUnitService.findById(id);
         return AxiosResuit.success(baseUnit);
     }
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete(@PathVariable Serializable id){
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iBaseUnitService.delete(id);
         return AxiosResuit.success();
     }

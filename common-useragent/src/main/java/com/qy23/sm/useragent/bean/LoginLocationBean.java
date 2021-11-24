@@ -21,12 +21,12 @@ public class LoginLocationBean {
      * error_code : 0
      * resultcode : 200
      */
-    private Map<String,String> result;
+    private Map<String, String> result;
     private String reason;
     private int error_code;
     private String resultcode;
 
-    public void setResult(Map<String,String>result) {
+    public void setResult(Map<String, String> result) {
         this.result = result;
     }
 
@@ -42,7 +42,7 @@ public class LoginLocationBean {
         this.resultcode = resultcode;
     }
 
-    public Map<String,String> getResult() {
+    public Map<String, String> getResult() {
         return result;
     }
 
@@ -58,5 +58,5 @@ public class LoginLocationBean {
         return resultcode;
     }
 
-    }
+}
 

@@ -5,7 +5,7 @@ import com.qy23.sm.entity.BaseSupplier;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author 刘伟

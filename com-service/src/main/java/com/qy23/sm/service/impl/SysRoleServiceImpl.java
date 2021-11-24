@@ -95,8 +95,8 @@ public class SysRoleServiceImpl implements ISysRoleService {
         sysRoleMapper.updateById(sysRole);
         iSysRoleMenuService.deleteByRoleId(sysRole.getRoleId());
         List<Long> menuIds = sysRole.getMenuIds();
-        if (!CollectionUtils.isEmpty(menuIds)){
-            menuIds.forEach(item->{
+        if (!CollectionUtils.isEmpty(menuIds)) {
+            menuIds.forEach(item -> {
                 SysRoleMenu sysRoleMenu = new SysRoleMenu();
                 sysRoleMenu.setMenuId(item);
                 sysRoleMenu.setRoleId(sysRole.getRoleId());

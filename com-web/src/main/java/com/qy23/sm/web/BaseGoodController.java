@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 刘伟
@@ -33,78 +33,85 @@ public class BaseGoodController {
 
     @Autowired
     private IBaseCategoryService iBaseCategoryService;
+
     /**
      * 查询所有
+     *
      * @return
      */
     @GetMapping()
-    public AxiosResuit list(){
+    public AxiosResuit list() {
         List<BaseGood> all = iBaseGoodService.findAll();
         return AxiosResuit.success(all);
     }
 
     /**
      * 分页查询
+     *
      * @param currentPage
      * @param pageSize
      * @return
      */
     @GetMapping("page")
     public AxiosResuit page(@RequestParam(defaultValue = "1") int currentPage,
-                            @RequestParam(defaultValue = "1") int pageSize){
-        IPage<BaseGood> page =new Page<>(currentPage,pageSize);
+                            @RequestParam(defaultValue = "1") int pageSize) {
+        IPage<BaseGood> page = new Page<>(currentPage, pageSize);
         IPage<BaseGood> page1 = iBaseGoodService.page(page);
         List<BaseGood> records = page1.getRecords();
-        records.forEach(item->{
+        records.forEach(item -> {
             BaseCategory category = iBaseCategoryService.findById(item.getTypeId());
             item.setTypeName(category.getName());
         });
-        return AxiosResuit.success(PageResult.instance(records,page1.getTotal()));
-}
+        return AxiosResuit.success(PageResult.instance(records, page1.getTotal()));
+    }
 
     /**
      * 添加
+     *
      * @param baseGood
      * @return
      */
     @PostMapping
     @HasPerm(perm = "base:good:add")
-    public AxiosResuit add(@RequestBody BaseGood baseGood){
+    public AxiosResuit add(@RequestBody BaseGood baseGood) {
         iBaseGoodService.add(baseGood);
         return AxiosResuit.success();
     }
 
     /**
      * 修改
+     *
      * @param baseGood
      * @return
      */
     @PutMapping
     @HasPerm(perm = "base:good:edit")
-    public AxiosResuit updata(@RequestBody BaseGood baseGood){
+    public AxiosResuit updata(@RequestBody BaseGood baseGood) {
         iBaseGoodService.update(baseGood);
         return AxiosResuit.success();
     }
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
     @GetMapping("{id}")
-    public AxiosResuit findById(@PathVariable Serializable id){
+    public AxiosResuit findById(@PathVariable Serializable id) {
         BaseGood baseGood = iBaseGoodService.findById(id);
         return AxiosResuit.success(baseGood);
     }
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete(@PathVariable Serializable id){
-       iBaseGoodService.delete(id);
-       return AxiosResuit.success();
+    public AxiosResuit delete(@PathVariable Serializable id) {
+        iBaseGoodService.delete(id);
+        return AxiosResuit.success();
     }
 }

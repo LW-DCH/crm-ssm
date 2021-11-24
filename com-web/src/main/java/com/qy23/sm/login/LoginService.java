@@ -66,6 +66,7 @@ public class LoginService {
 
     /**
      * 获取菜单权限相关
+     *
      * @param userId
      */
     public List<SysMenu> getUserInfo(Long userId) {
@@ -75,6 +76,7 @@ public class LoginService {
 
     /**
      * 获取按钮权限相关
+     *
      * @param userId
      * @return
      */

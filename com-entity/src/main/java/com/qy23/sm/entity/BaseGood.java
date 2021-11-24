@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author 刘伟
@@ -22,7 +22,7 @@ public class BaseGood implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * 商品编码 采用UUId 
+     * 商品编码 采用UUId
      */
     @TableId(type = IdType.ASSIGN_UUID)
     private String goodCode;
@@ -46,7 +46,7 @@ public class BaseGood implements Serializable {
      */
     private transient String typeName;
     /**
-     * 商品单位 
+     * 商品单位
      */
     private String goodUnit;
 

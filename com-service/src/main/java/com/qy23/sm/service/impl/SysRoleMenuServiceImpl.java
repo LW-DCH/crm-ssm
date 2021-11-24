@@ -58,14 +58,14 @@ public class SysRoleMenuServiceImpl implements ISysRoleMenuService {
     @Override
     public void deleteByRoleId(Serializable id) {
         QueryWrapper<SysRoleMenu> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysRoleMenu::getRoleId,id);
+        wrapper.lambda().eq(SysRoleMenu::getRoleId, id);
         sysRoleMenuMapper.delete(wrapper);
     }
 
     @Override
     public List<SysRoleMenu> findSysRoleMenuByRoleId(Serializable roleId) {
         QueryWrapper<SysRoleMenu> wrapper = new QueryWrapper<>();
-        wrapper.lambda().eq(SysRoleMenu::getRoleId,roleId);
+        wrapper.lambda().eq(SysRoleMenu::getRoleId, roleId);
         return sysRoleMenuMapper.selectList(wrapper);
     }
 }

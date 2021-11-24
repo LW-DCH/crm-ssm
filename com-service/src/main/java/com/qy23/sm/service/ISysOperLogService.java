@@ -1,6 +1,5 @@
 package com.qy23.sm.service;
 
-import com.baomidou.mybatisplus.extension.service.IService;
 import com.qy23.sm.entity.SysOperLog;
 
 /**

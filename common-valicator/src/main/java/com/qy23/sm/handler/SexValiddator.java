@@ -14,16 +14,17 @@ import java.util.List;
  * @Description
  * @Version 1.0
  **/
-public class SexValiddator implements ConstraintValidator<SexValues,String> {
+public class SexValiddator implements ConstraintValidator<SexValues, String> {
 
 
     List<String> list;
+
     @Override
     public void initialize(SexValues constraintAnnotation) {
         //初始化
         //values注解上自己指定的值
         String[] values = constraintAnnotation.values();
-        list=Arrays.asList(values);
+        list = Arrays.asList(values);
     }
 
     @Override

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author 刘伟
@@ -16,6 +16,7 @@ public interface IBaseCategoryService extends IBaseService<BaseCategory> {
 
     /**
      * 递归获得分类
+     *
      * @return
      */
     List<BaseCategory> getCategoryTree();

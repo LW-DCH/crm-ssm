@@ -7,8 +7,8 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.qy23.sm.cache.CacheService;
 import com.qy23.sm.entity.LoginUser;
 import com.qy23.sm.entity.SysUser;
-import com.qy23.sm.http.AxiosStatus;
 import com.qy23.sm.exception.JwtAuthorizationException;
+import com.qy23.sm.http.AxiosStatus;
 import com.qy23.sm.useragent.ServiceUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class TokenService {
 
     private String secret = "2242344F45B067EE2F3C294688251F17";
 
-    private long expireTime = 1000 * 60 * 60*24;
+    private long expireTime = 1000 * 60 * 60 * 24;
 
     @Autowired
     private CacheService cacheService;
@@ -120,7 +120,7 @@ public class TokenService {
         String token = getToken(request);
         String tokenUUID = getTokenUUID(token);
         LoginUser loginUser = cacheService.getcacheLoginUser(tokenUUID);
-        if (loginUser==null){
+        if (loginUser == null) {
             throw new JwtAuthorizationException(AxiosStatus.TOKEN_VALID_FAILURE);
         }
         return loginUser;
@@ -185,9 +185,9 @@ public class TokenService {
     /**
      * 清除redis
      */
-    public void removeLoginUser(){
+    public void removeLoginUser() {
         LoginUser loginUser = this.getLoginUser(ServiceUtils.getRequest());
-         cacheService.removeCache(loginUser.getUuid());
+        cacheService.removeCache(loginUser.getUuid());
 
     }
 

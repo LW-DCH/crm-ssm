@@ -20,14 +20,16 @@ import java.util.Map;
  **/
 public class ServiceUtils {
 
-    /**.
+    /**
+     * .
      * 获取IP地址
+     *
      * @param
      * @return
      */
-    public static String getIpAddr(){
+    public static String getIpAddr() {
         HttpServletRequest request = getRequest();
-        System.out.println("////"+request);
+        System.out.println("////" + request);
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -44,29 +46,31 @@ public class ServiceUtils {
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getRemoteAddr();
         }
-        if ("0:0:0:0:0:0:0:1".equalsIgnoreCase(ip)){
+        if ("0:0:0:0:0:0:0:1".equalsIgnoreCase(ip)) {
             return "127.0.0.1";
         }
 
-         return ip;
+        return ip;
     }
 
-    /**.
+    /**
+     * .
      * 获取真实地址
+     *
      * @param
      * @return
      */
-    public static  String getloginLocation(){
+    public static String getloginLocation() {
         String addr = getIpAddr();
         RestTemplate restTemplate = SpringUtils.getBean(RestTemplate.class);
         LoginLocationBean locationBean = restTemplate.getForObject("http://apis.juhe.cn/ip/ipNew?ip=" + addr + "&key=0b0122d5b3055bc2dea21770a8df3f4d", LoginLocationBean.class);
 
-        if ("200".equalsIgnoreCase(locationBean.getResultcode())){
+        if ("200".equalsIgnoreCase(locationBean.getResultcode())) {
             Map<String, String> result = locationBean.getResult();
             String country = result.get("Country");
             String province = result.get("Province");
             String city = result.get("City");
-            return country+province+city;
+            return country + province + city;
         }
 
         return "未知地区";
@@ -76,39 +80,42 @@ public class ServiceUtils {
     /**
      * 获取requestrequest
      */
-    public static HttpServletRequest getRequest(){
+    public static HttpServletRequest getRequest() {
 
         return getServletRequestAttributes().getRequest();
     }
 
     /**
      * 获取Response
+     *
      * @return
      */
-    public static HttpServletResponse getResponse(){
+    public static HttpServletResponse getResponse() {
 
         return getServletRequestAttributes().getResponse();
     }
 
     /**
      * 获取RequestContextHolder
+     *
      * @return
      */
-    public static ServletRequestAttributes getServletRequestAttributes(){
+    public static ServletRequestAttributes getServletRequestAttributes() {
         return (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
     }
 
     /**
      * 解析UserAgent
+     *
      * @param
      * @return
      */
-    public static String getUserAgent(){
+    public static String getUserAgent() {
 
         return getRequest().getHeader("User-Agent");
     }
 
-    public static void returnJsonStr(String message){
+    public static void returnJsonStr(String message) {
         HttpServletResponse response = getResponse();
         response.setContentType("application/json;charset=utf-8");
         try {

@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author 刘伟
@@ -28,6 +28,7 @@ public class BaseSupplierServiceImpl implements IBaseSupplierService {
 
     /**
      * 查询所有
+     *
      * @return
      */
     @Override
@@ -37,6 +38,7 @@ public class BaseSupplierServiceImpl implements IBaseSupplierService {
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
@@ -47,11 +49,12 @@ public class BaseSupplierServiceImpl implements IBaseSupplierService {
 
     @Override
     public IPage<BaseSupplier> page(IPage<BaseSupplier> page) {
-        return baseSupplierMapper.selectPage(page,null);
+        return baseSupplierMapper.selectPage(page, null);
     }
 
     /**
      * 添加
+     *
      * @param baseSupplier
      */
     @Override
@@ -61,6 +64,7 @@ public class BaseSupplierServiceImpl implements IBaseSupplierService {
 
     /**
      * 修改
+     *
      * @param baseSupplier
      */
     @Override
@@ -70,6 +74,7 @@ public class BaseSupplierServiceImpl implements IBaseSupplierService {
 
     /**
      * 删除
+     *
      * @param id
      */
     @Override

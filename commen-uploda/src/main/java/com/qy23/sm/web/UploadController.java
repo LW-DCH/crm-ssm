@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Part;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,11 +48,11 @@ public class UploadController {
         }
 
         //判断文件大小
-        if ((file.getSize() / 1024 / 1024 )>=2) {
+        if ((file.getSize() / 1024 / 1024) >= 2) {
             return AxiosResuit.error(AxiosStatus.FILE_TOLONG);
         }
         //判断是否是个图片
-        if (Objects.isNull(ImageIO.read(file.getInputStream()))){
+        if (Objects.isNull(ImageIO.read(file.getInputStream()))) {
             return AxiosResuit.error(AxiosStatus.NOT_IMAGE);
         }
 

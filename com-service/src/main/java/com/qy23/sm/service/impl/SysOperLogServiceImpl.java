@@ -1,7 +1,6 @@
 package com.qy23.sm.service.impl;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qy23.sm.entity.SysOperLog;
 import com.qy23.sm.mapper.SysOperLogMapper;
 import com.qy23.sm.service.ISysOperLogService;

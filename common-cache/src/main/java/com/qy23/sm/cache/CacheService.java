@@ -25,31 +25,34 @@ public class CacheService {
 
     /**
      * 存缓存
+     *
      * @param key
      * @param obj
      */
-    public void cacheObj(String key,Object obj){
+    public void cacheObj(String key, Object obj) {
 
-        stringRedisTemplate.opsForValue().set(key,jsonUtils.obj2str(obj));
+        stringRedisTemplate.opsForValue().set(key, jsonUtils.obj2str(obj));
     }
 
     /**
      * 存缓存+有效时间
+     *
      * @param key
      * @param obj
      */
-    public void cacheObj(String key,Object obj,long expireTime){
-        stringRedisTemplate.opsForValue().set(key,jsonUtils.obj2str(obj),expireTime,TimeUnit.MILLISECONDS);
+    public void cacheObj(String key, Object obj, long expireTime) {
+        stringRedisTemplate.opsForValue().set(key, jsonUtils.obj2str(obj), expireTime, TimeUnit.MILLISECONDS);
     }
 
     /**
      * 获取对象
+     *
      * @param key
      * @param tClass
      * @param <T>
      * @return
      */
-    public <T> T getcacheObj(String key,Class<T> tClass){
+    public <T> T getcacheObj(String key, Class<T> tClass) {
         String s = stringRedisTemplate.opsForValue().get(key);
         T t = jsonUtils.str2obj(s, tClass);
         return t;
@@ -57,10 +60,11 @@ public class CacheService {
 
     /**
      * 获取登录对象
+     *
      * @param key
      * @return
      */
-    public LoginUser getcacheLoginUser(String key){
+    public LoginUser getcacheLoginUser(String key) {
         LoginUser loginUser = this.getcacheObj(key, LoginUser.class);
         return loginUser;
     }
@@ -68,27 +72,30 @@ public class CacheService {
 
     /**
      * 缓存登录对象
+     *
      * @param key
      * @param loginUser
      */
-   public void cacheLoginUser(String key,LoginUser loginUser){
-        this.cacheObj(key,loginUser);
-   }
+    public void cacheLoginUser(String key, LoginUser loginUser) {
+        this.cacheObj(key, loginUser);
+    }
 
     /**
      * 缓存登录对象+有效时间
+     *
      * @param key
      * @param loginUser
      */
-    public void cacheLoginUser(String key,LoginUser loginUser,long expireTime){
-       this.cacheObj(key,loginUser,expireTime);
+    public void cacheLoginUser(String key, LoginUser loginUser, long expireTime) {
+        this.cacheObj(key, loginUser, expireTime);
     }
 
     /**
      * 清除缓存
+     *
      * @param key
      */
-    public void removeCache(String key){
+    public void removeCache(String key) {
         stringRedisTemplate.delete(key);
     }
 

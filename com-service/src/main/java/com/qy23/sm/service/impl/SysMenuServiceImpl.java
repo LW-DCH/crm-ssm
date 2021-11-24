@@ -25,6 +25,7 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     @Autowired
     private SysMenuMapper sysMenuMapper;
+
     @Override
     public List<SysMenu> findAll() {
 
@@ -50,35 +51,35 @@ public class SysMenuServiceImpl implements ISysMenuService {
 
     @Override
     public void update(SysMenu sysMenu) {
-         sysMenuMapper.updateById(sysMenu);
+        sysMenuMapper.updateById(sysMenu);
     }
 
     @Override
     public void delete(Serializable id) {
-       sysMenuMapper.deleteById(id);
+        sysMenuMapper.deleteById(id);
     }
 
     @Override
     public List<SysMenu> getAllMenuTree() {
         List<SysMenu> all = this.findAll();
         //过滤出父ID为0的值
-        List<SysMenu> collect = all.stream().filter(sysMenu -> sysMenu.getParentId().longValue()==0).collect(Collectors.toList());
+        List<SysMenu> collect = all.stream().filter(sysMenu -> sysMenu.getParentId().longValue() == 0).collect(Collectors.toList());
 
         collect.forEach(sysMenu -> {
-            getMenuChild(sysMenu,all);
+            getMenuChild(sysMenu, all);
         });
 
 
         return collect;
     }
 
-    public void getMenuChild(SysMenu sysMenu,List<SysMenu> all){
+    public void getMenuChild(SysMenu sysMenu, List<SysMenu> all) {
         List<SysMenu> collect = all.stream().filter(sysMenu1 -> sysMenu1.getParentId().equals(sysMenu.getMenuId())).collect(Collectors.toList());
-        if (!CollectionUtils.isEmpty(collect)){
+        if (!CollectionUtils.isEmpty(collect)) {
             sysMenu.setChildren(collect);
         }
-       collect.forEach(sysMenu2 ->{
-           getMenuChild(sysMenu2,all);
-       } );
+        collect.forEach(sysMenu2 -> {
+            getMenuChild(sysMenu2, all);
+        });
     }
 }

@@ -29,7 +29,7 @@ public class SysMenuController {
 
     @Autowired
     private ISysMenuService iSysMenuService;
-   
+
 
     /**
      * 查询所有
@@ -52,7 +52,7 @@ public class SysMenuController {
     @GetMapping("page")
     public AxiosResuit page(@RequestParam(defaultValue = "1") int currentPage,
                             @RequestParam(defaultValue = "1") int pageSize) {
-     return AxiosResuit.success();
+        return AxiosResuit.success();
     }
 
     /**
@@ -99,7 +99,7 @@ public class SysMenuController {
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete( @PathVariable Serializable id) {
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iSysMenuService.delete(id);
         return AxiosResuit.success();
     }

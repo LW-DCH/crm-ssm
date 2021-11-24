@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 刘伟
@@ -30,79 +30,86 @@ public class BaseCategoryController {
 
     /**
      * 查询所有
+     *
      * @return
      */
     @GetMapping()
-    public AxiosResuit list(){
+    public AxiosResuit list() {
         List<BaseCategory> all = iBaseCategoryService.findAll();
         return AxiosResuit.success(all);
     }
 
     /**
      * 分页查询
+     *
      * @param currentPage
      * @param pageSize
      * @return
      */
     @GetMapping("page")
     public AxiosResuit page(@RequestParam(defaultValue = "1") int currentPage,
-                            @RequestParam(defaultValue = "1") int pageSize){
-        IPage<BaseCategory> page =new Page<>(currentPage,pageSize);
+                            @RequestParam(defaultValue = "1") int pageSize) {
+        IPage<BaseCategory> page = new Page<>(currentPage, pageSize);
         IPage<BaseCategory> page1 = iBaseCategoryService.page(page);
-        return AxiosResuit.success(PageResult.instance(page1.getRecords(),page1.getTotal()));
+        return AxiosResuit.success(PageResult.instance(page1.getRecords(), page1.getTotal()));
     }
 
     /**
      * 添加
+     *
      * @param baseCategory
      * @return
      */
     @PostMapping
-    public AxiosResuit add(@RequestBody BaseCategory baseCategory){
+    public AxiosResuit add(@RequestBody BaseCategory baseCategory) {
         iBaseCategoryService.add(baseCategory);
         return AxiosResuit.success();
     }
 
     /**
      * 修改
+     *
      * @param baseCategory
      * @return
      */
     @PutMapping
-    public AxiosResuit updata(@RequestBody BaseCategory baseCategory){
+    public AxiosResuit updata(@RequestBody BaseCategory baseCategory) {
         iBaseCategoryService.update(baseCategory);
         return AxiosResuit.success();
     }
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
     @GetMapping("{id}")
-    public AxiosResuit findById(@PathVariable Serializable id){
+    public AxiosResuit findById(@PathVariable Serializable id) {
         BaseCategory baseCategory = iBaseCategoryService.findById(id);
         return AxiosResuit.success(baseCategory);
     }
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete(@PathVariable Serializable id){
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iBaseCategoryService.delete(id);
         return AxiosResuit.success();
     }
 
     /**
      * 递归查询分类
+     *
      * @return
      */
     @GetMapping("categoryTree")
-    public AxiosResuit categoryTree(){
-         List<BaseCategory> categoryTree=iBaseCategoryService.getCategoryTree();
+    public AxiosResuit categoryTree() {
+        List<BaseCategory> categoryTree = iBaseCategoryService.getCategoryTree();
         return AxiosResuit.success(categoryTree);
     }
 }

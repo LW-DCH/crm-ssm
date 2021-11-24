@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(JwtAuthorizationException.class)
-    public AxiosResuit myException(JwtAuthorizationException e){
+    public AxiosResuit myException(JwtAuthorizationException e) {
         return AxiosResuit.success(e.getAxiosStatus());
     }
 
     @ExceptionHandler(JWTVerificationException.class)
-    public AxiosResuit myException(JWTVerificationException e){
+    public AxiosResuit myException(JWTVerificationException e) {
         return AxiosResuit.success(AxiosStatus.TOKEN_VALID_FAILURE);
     }
 }

@@ -10,6 +10,6 @@ import com.qy23.sm.entity.SysRole;
  * @author 刘伟
  * @since 2020-10-21
  */
-public interface ISysRoleService extends IBaseService<SysRole>  {
+public interface ISysRoleService extends IBaseService<SysRole> {
 
 }

@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author 刘伟
@@ -30,68 +30,74 @@ public class BaseSupplierController {
 
     /**
      * 查询所有
+     *
      * @return
      */
     @GetMapping()
-    public AxiosResuit list(){
+    public AxiosResuit list() {
         List<BaseSupplier> all = iBaseSupplierService.findAll();
         return AxiosResuit.success(all);
     }
 
     /**
      * 分页查询
+     *
      * @param currentPage
      * @param pageSize
      * @return
      */
     @GetMapping("page")
     public AxiosResuit page(@RequestParam(defaultValue = "1") int currentPage,
-                            @RequestParam(defaultValue = "1") int pageSize){
-        IPage<BaseSupplier> page =new Page<>(currentPage,pageSize);
+                            @RequestParam(defaultValue = "1") int pageSize) {
+        IPage<BaseSupplier> page = new Page<>(currentPage, pageSize);
         IPage<BaseSupplier> page1 = iBaseSupplierService.page(page);
-        return AxiosResuit.success(PageResult.instance(page1.getRecords(),page1.getTotal()));
+        return AxiosResuit.success(PageResult.instance(page1.getRecords(), page1.getTotal()));
     }
 
     /**
      * 添加
+     *
      * @param baseSupplier
      * @return
      */
     @PostMapping
-    public AxiosResuit add(@RequestBody BaseSupplier baseSupplier){
+    public AxiosResuit add(@RequestBody BaseSupplier baseSupplier) {
         iBaseSupplierService.add(baseSupplier);
         return AxiosResuit.success();
     }
 
     /**
      * 修改
+     *
      * @param baseSupplier
      * @return
      */
     @PutMapping
-    public AxiosResuit updata(@RequestBody BaseSupplier baseSupplier){
+    public AxiosResuit updata(@RequestBody BaseSupplier baseSupplier) {
         iBaseSupplierService.update(baseSupplier);
         return AxiosResuit.success();
     }
 
     /**
      * 通过ID查询
+     *
      * @param id
      * @return
      */
     @GetMapping("{id}")
-    public AxiosResuit findById(@PathVariable Serializable id){
+    public AxiosResuit findById(@PathVariable Serializable id) {
         BaseSupplier baseSupplier = iBaseSupplierService.findById(id);
         return AxiosResuit.success(baseSupplier);
     }
 
     /**
      * 删除
+     *
      * @param id
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete(@PathVariable Serializable id){
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iBaseSupplierService.delete(id);
         return AxiosResuit.success();
     }

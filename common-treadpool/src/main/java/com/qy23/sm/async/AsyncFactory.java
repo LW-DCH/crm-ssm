@@ -5,9 +5,7 @@ import com.qy23.sm.entity.SysLoginLog;
 import com.qy23.sm.service.ISysLoginLogService;
 import com.qy23.sm.spring.SpringUtils;
 import com.qy23.sm.useragent.ServiceUtils;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import eu.bitwalker.useragentutils.UserAgent;
-import org.springframework.web.context.request.RequestContextHolder;
 
 import java.time.LocalDateTime;
 

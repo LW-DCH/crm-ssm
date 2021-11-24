@@ -26,7 +26,7 @@ public class SysRoleController {
 
     @Autowired
     private ISysRoleService iSysRoleService;
-   
+
 
     /**
      * 查询所有
@@ -40,7 +40,6 @@ public class SysRoleController {
     }
 
 
-
     /**
      * 添加
      *
@@ -49,7 +48,7 @@ public class SysRoleController {
      */
     @PostMapping
 
-    public AxiosResuit add( @RequestBody SysRole SysRole)  {
+    public AxiosResuit add(@RequestBody SysRole SysRole) {
         iSysRoleService.add(SysRole);
         return AxiosResuit.success();
     }
@@ -85,7 +84,7 @@ public class SysRoleController {
      * @return
      */
     @DeleteMapping("{id}")
-    public AxiosResuit delete( @PathVariable Serializable id) {
+    public AxiosResuit delete(@PathVariable Serializable id) {
         iSysRoleService.delete(id);
         return AxiosResuit.success();
     }

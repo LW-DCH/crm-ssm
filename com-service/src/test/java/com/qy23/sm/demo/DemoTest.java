@@ -32,6 +32,7 @@ public class DemoTest {
     public void doTest() {
         System.out.println(iBaseCategoryService.getCategoryTree());
     }
+
     @Test
     public void doTest1() {
         List<BaseGood> all = iBaseGoodService.findAll();

@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        table{
+        table {
             width: 600px;
             text-align: center;
             border-collapse: collapse;
             margin-top: 50px;
         }
-        th,td{
+
+        th, td {
             border: 1px solid #ccc;
             line-height: 40px;
         }

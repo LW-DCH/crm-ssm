@@ -14,10 +14,10 @@ import java.util.List;
  * @author 刘伟
  * @since 2020-10-21
  */
-public interface ISysUserRoleService extends IBaseService<SysUserRole>  {
+public interface ISysUserRoleService extends IBaseService<SysUserRole> {
     List<SysRole> getRoleByUserId(Serializable userId);
 
-    void deleteRoleById(Serializable userId,Serializable roleId);
+    void deleteRoleById(Serializable userId, Serializable roleId);
 
     void deleteRoleByUserId(Serializable userId);
 }

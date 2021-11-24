@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import java.io.Serializable;
 import java.util.List;
 
-public interface IBaseService <T>{
+public interface IBaseService<T> {
 
     List<T> findAll();
 

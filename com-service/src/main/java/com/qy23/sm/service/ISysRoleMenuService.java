@@ -13,8 +13,9 @@ import java.util.List;
  * @author 刘伟
  * @since 2020-10-21
  */
-public interface ISysRoleMenuService extends IBaseService<SysRoleMenu>  {
+public interface ISysRoleMenuService extends IBaseService<SysRoleMenu> {
 
     List<SysRoleMenu> findSysRoleMenuByRoleId(Serializable roleId);
+
     void deleteByRoleId(Serializable id);
 }

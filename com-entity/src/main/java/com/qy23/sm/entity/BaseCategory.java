@@ -41,6 +41,7 @@ public class BaseCategory implements Serializable {
 
     private transient String pidName;
 
+
     private transient List<BaseCategory> children;
 
 
